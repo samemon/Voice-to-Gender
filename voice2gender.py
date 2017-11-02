@@ -50,7 +50,7 @@ if __name__ == "__main__":
         print("Usage: python voice2age.py <full path to wav file>")
         sys.exit()
     else:
-        model = load_model("mfcc_ws15_4gender_gender.h5")
+        model = load_model("mfcc_ws15_4gender.h5")
         tfm = sox.Transformer()
         #Downsampling the audio to 16000 KHz
         tfm.convert(samplerate=16000)
@@ -62,7 +62,6 @@ if __name__ == "__main__":
         #We are processing a 15 frame window
         preprocessed_x = preprocess.preprocess(mfcc,15)
         #Now that we have preprocessed x, let us classify it
-        #print(Counter(map(lambda pred:1 if pred >= 0.5 else 0,model.predict(preprocessed_x))))
         gender =Counter(map(lambda pred:1 if pred >= 0.5 else 0,
                                      model.predict(preprocessed_x))).most_common()[0][0]
         print gender

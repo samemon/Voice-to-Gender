@@ -16,7 +16,7 @@ REQUIREMENTS:
 To run the voice2gender.py program, you would need the following libraries:
 - keras
 - numpy
-- pysox
+- sox (python library via pip install sox)
 - scipy
 
 Once you have installed the above requirements (using pip install), you can run the 
