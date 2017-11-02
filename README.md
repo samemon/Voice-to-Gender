@@ -26,29 +26,9 @@ $ python voice2gender.py <full path to the wav file>
 
 The above program will print 0/1 where 0 == Male, 1 == Female
 
-PS. If the model does not load due to the error "Can't load_model with error “Optimizer weight shape [..]", then you would need to create a python file in this directory with the following code
+PS. If the model does not load due to the error "Can't load_model with error “Optimizer weight shape [..]", then you would need to run the convert_to_old.py program as most probably this issue has to do with the version of keras you are using.
 
-############################################
-
-import glob
-
-import h5py
-
-model_files = sorted(glob.glob('*.h5'))
-
-for model_file in model_files:
-
-    print("Update '{}'".format(model_file))
-
-    with h5py.File(model_file, 'a') as f:
-
-        if 'optimizer_weights' in f.keys():
-
-            del f['optimizer_weights']
-
-###########################################
-
-After running the above program, you should try to run the program again.
+Now you should try to run the program again.
 
 --------------------------------------------
 
